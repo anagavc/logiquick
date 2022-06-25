@@ -18,8 +18,8 @@ const Services = () => {
       </div>
 
       <div className="flex justify-between space-x-6 w-full">
-        <div className="bg-pry-100 drop-shadow px-8 py-8  h-72 rounded flex-1 flex flex-col items-center  space-y-6">
-          <div className="bg-sec rounded-full flex justify-center items-center text-pry-50 h-20 w-20 py-8">
+        <div className="bg-pry-100 drop-shadow px-8 py-8  h-72 rounded flex-1 flex flex-col items-center hover:scale-100 space-y-6  transition duration-300">
+          <div className="bg-sec rounded-full border-8 border-pry-50 flex justify-center items-center text-pry-50 h-20 w-20 py-8">
             <FlightTakeoff sx={{ width: 100 }} />
           </div>
 

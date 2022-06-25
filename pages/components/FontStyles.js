@@ -2,12 +2,21 @@ export const SectionTitle = ({ title }) => {
   return (
     <div className="flex space-x-4 items-center">
       <span className="w-1/5 h-2 bg-sec"></span>
-      <h4 className="text-2xl font-heading font-medium text-sec">{title}</h4>
+      <h4 className="text-2xl font-heading font-bold text-sec">{title}</h4>
     </div>
   );
 };
 export const Paragraph = ({ title, color, align }) => {
   return (
     <p className={`text-${align} font-body text-base text-${color}`}>{title}</p>
+  );
+};
+export const HeadingSix = ({ title, color, align }) => {
+  return (
+    <h6
+      className={`text-xl text-${color} font-heading text-center  font-bold  w-full`}
+    >
+      {title}
+    </h6>
   );
 };

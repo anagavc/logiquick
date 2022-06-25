@@ -41,10 +41,10 @@ export const SecondaryButton = ({ name, path, click }) => {
   );
 };
 
-export const SectionButton = ({ name, path, click }) => {
+export const SectionButton = ({ name, path }) => {
   return (
     <Link key={name + "button"} href={path}>
-      <a className="md:mr-0 text-base bg-sec rounded-full flex  justify-center   w-full md:w-auto  md:space-x-12 items-center py-4 px-8 font-heading md:my-0 my-7 text-pry-50  hover:text-pry-50 hover:bg-pry-100  transition duration-500">
+      <a className="md:mr-0 text-base bg-sec rounded-full flex  justify-center  w-full md:w-auto  md:space-x-12 items-center py-4 px-8 font-heading md:my-0 my-7 text-pry-50  hover:text-pry-100 hover:bg-pry-50  transition duration-500">
         {name}
       </a>
     </Link>
