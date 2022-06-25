@@ -34,7 +34,7 @@ export const Navbar = () => {
 
   return (
     <div className="border-b-4 border-b-sec flex justify-between w-full fixed top-0 left-0 bg-pry-100 px-12 z-50">
-      <div className="flex justify-start items-center md:py-2 md:px-10  py-4 z-10">
+      <div className="flex justify-start items-center md:py-3 md:px-10  py-4 z-10">
         <Link href="/">
           <span className="text-lg space-x-2 cursor-pointer text-pry-50 font-heading justify-center hover:text-sec transition duration-300  flex items-center">
             LogiQuick

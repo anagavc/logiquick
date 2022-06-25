@@ -4,8 +4,8 @@ import Image from "next/Image";
 import heroImg from "../../images/heroImg.svg";
 const Header = () => {
   return (
-    <div className="flex  flex-col justify-between items-center bg-pry-100 py-28 px-24 h-5/6 w-full">
-      <div className="flex justify-between items-center w-full">
+    <div className="flex  flex-col justify-between items-center bg-pry-100 py-28 px-24 h-screen w-full">
+      <div className="flex justify-between items-center w-full h-full">
         <div className="flex flex-col space-y-12 justify-between w-4/5">
           <p className="font-heading text-lg text-sec">
             Best courier company in Uyo
@@ -26,11 +26,7 @@ const Header = () => {
           </div>
         </div>
         <div className="2/5">
-          <Image
-            src={heroImg}
-            alt="Hero"
-            className="w-full h-full scale-x-flip"
-          />
+          <Image src={heroImg} alt="Hero" className="w-full scale-x-flip" />
         </div>
       </div>
     </div>
