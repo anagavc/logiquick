@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Close, Menu } from "@mui/icons-material";
 import NavItem from "./NavItem";
-import { PrimaryButton } from "../Buttons";
+import { Button } from "../Buttons";
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const currentUser = true;
@@ -74,8 +74,15 @@ export const Navbar = () => {
       <div className="md:flex  items-center hidden  space-x-8  justify-center  px-12 md:py-2 pb-12  md:static bg-pry-100 md:z-40 z-40 w-full md:w-auto md:px-0">
         <div className="flex justify-center items-center space-x-8">
           <NavItem path="/login" key="loginButton" name="Login" />
-
-          <PrimaryButton name="Register" path="/register" />
+          <Button
+            name="Register"
+            bgColor="sec"
+            py="2"
+            text="pry-50"
+            hoverText="pry-100"
+            hoverBg="pry-50"
+            path="/register"
+          />
         </div>
       </div>
     </div>

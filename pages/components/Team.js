@@ -2,6 +2,10 @@ import React from "react";
 import { Paragraph } from "./FontStyles";
 import Image from "next/image";
 import staff1 from "../../images/staff1.png";
+import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import Link from "next/link";
 const Team = () => {
   return (
     <div className="bg-pry-50 flex flex-col justify-center items-center py-24 px-24 space-y-6">
@@ -50,10 +54,27 @@ const Team = () => {
               Chief Logistics Officer
             </h5>
             <Paragraph
-              color="sec"
+              color="pry-50"
               align="center"
               title="An experienced hand in the logistics industry with over 20 years of experience"
             />
+            <div className="flex justify-between space-x-2 ">
+              <Link href="www.facebook.com">
+                <a className="text-sec hover:text-pry-50 transition duration-300">
+                  <FacebookOutlinedIcon />
+                </a>
+              </Link>
+              <Link href="www.facebook.com">
+                <a className="hover:text-pry-50">
+                  <TwitterIcon />
+                </a>
+              </Link>
+              <Link href="www.facebook.com">
+                <a className="hover:text-pry-50">
+                  <LinkedInIcon />
+                </a>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="bg-pry-100 flex flex-col w-96 px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">

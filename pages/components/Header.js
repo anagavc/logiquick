@@ -1,5 +1,5 @@
 import React from "react";
-import { PrimaryButton, SecondaryButton } from "./Buttons";
+import { Button } from "./Buttons";
 import Image from "next/Image";
 import heroImg from "../../images/heroImg.svg";
 const Header = () => {
@@ -21,8 +21,24 @@ const Header = () => {
             our state of the art logistics services.
           </p>
           <div className="flex space-x-4">
-            <PrimaryButton name="Track your order" />
-            <SecondaryButton name="Request a quote" />
+            <Button
+              name="Track your order"
+              bgColor="sec"
+              py="2"
+              text="pry-50"
+              hoverText="pry-100"
+              hoverBg="pry-50"
+              path="/trackOrder"
+            />
+            <Button
+              name="Request a quote"
+              borderColor="pry-50"
+              py="2"
+              text="pry-50"
+              hoverText="pry-100"
+              hoverBg="pry-50"
+              path="/requestQuote"
+            />
           </div>
         </div>
         <div className="2/5">

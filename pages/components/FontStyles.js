@@ -11,10 +11,10 @@ export const Paragraph = ({ title, color, align }) => {
     <p className={`text-${align} font-body text-base text-${color}`}>{title}</p>
   );
 };
-export const HeadingSix = ({ title, color, align }) => {
+export const HeadingSix = ({ title, color, align, size }) => {
   return (
     <h6
-      className={`text-xl text-${color} font-heading text-center  font-bold  w-full`}
+      className={`text-${size} text-${color}  font-heading text-${align} font-bold  w-full`}
     >
       {title}
     </h6>

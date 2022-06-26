@@ -1,7 +1,5 @@
-import Image from "next/image";
 import React from "react";
-import { SectionButton } from "./Buttons";
-import { Paragraph, SectionTitle } from "./FontStyles";
+import { Paragraph } from "./FontStyles";
 import FlightTakeoff from "@mui/icons-material/FlightTakeoff";
 const Services = () => {
   return (

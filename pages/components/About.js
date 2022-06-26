@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import about from "../../images/about.svg";
-import { SectionButton } from "./Buttons";
+import { Button } from "./Buttons";
 import { SectionTitle, Paragraph } from "./FontStyles";
 
 const About = () => {
@@ -25,7 +25,15 @@ const About = () => {
             the art logistics services.Manage your business’ logistics needs more efficiently with our state of
             the art logistics services."
         />
-        <SectionButton name="Read more" path="/about" />
+        <Button
+          name="Read more"
+          bgColor="sec"
+          py="4"
+          text="pry-50"
+          hoverText="pry-100"
+          hoverBg="pry-50"
+          path="/about"
+        />
       </div>
     </div>
   );
