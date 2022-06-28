@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import React from "react";
 export const Button = ({
   name,
   path,
@@ -7,22 +7,30 @@ export const Button = ({
   py,
   bgColor,
   borderColor,
-  text,
   hoverText,
   hoverBg,
+  text,
+  width,
+  square,
 }) => {
   const buttonStyle = `
   md:mr-0 text-base ${bgColor && `bg-${bgColor}`} py-${py} ${
     borderColor && `border border-${borderColor}`
-  }  text-${text}  hover:text-${hoverText} hover:bg-${hoverBg} rounded-full flex  justify-center   w-full md:w-auto  md:space-x-12 items-center  px-8 font-heading md:my-0 my-7   transition duration-500`;
+  }  text-${text}  hover:text-${hoverText} hover:bg-${hoverBg} ${
+    square ? "rounded-none" : "rounded-full"
+  } flex  justify-center  w-full md:w-${
+    width ? width : "auto"
+  } md:space-x-12 items-center  px-8 font-heading md:my-0 my-7   transition duration-500`;
   return (
     <>
       {path ? (
-        <Link key={name + "button"} href={path}>
-          <a className={buttonStyle}>{name}</a>
+        <Link href={path}>
+          <a className={buttonStyle} key={name + "button"}>
+            {name}
+          </a>
         </Link>
       ) : (
-        <button className={buttonStyle} key="logoutButton" onClick={click}>
+        <button className={buttonStyle} onClick={click}>
           {name}
         </button>
       )}

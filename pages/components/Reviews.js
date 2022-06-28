@@ -40,7 +40,7 @@ const Reviews = () => {
     },
   ];
   return (
-    <div className="bg-pry-100 flex flex-col justify-between items-center py-24 px-24 space-y-12">
+    <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 px-24  space-y-12">
       <div className="flex flex-col items-center justify-center">
         <h3 className="text-pry-50 text-3xl font-bold font-heading">
           What Our <span className="text-sec">Clients</span> Have To Say
@@ -67,15 +67,15 @@ const Reviews = () => {
             slidesPerView: 1,
           },
           991: {
-            slidesPerView: 2,
+            slidesPerView: 3,
           },
         }}
-        className="flex space-x-8 w-full"
+        className="flex  w-full"
       >
         {reviews.map((review, index) => {
           return (
-            <SwiperSlide>
-              <div className="flex flex-col space-y-4 w-full py-8 px-6 rounded justify-center items-center h-2/5 border-x-4 drop-shadow border-x-sec  bg-pry-50 ">
+            <SwiperSlide key={review.reviewer}>
+              <div className="flex flex-col space-y-4 w-full py-8 px-6 rounded  items-center  border-x-4 drop-shadow border-x-sec  bg-pry-50 ">
                 <h6 className="text-xl text-pry-100 font-heading text-center  font-bold border-b border-b-pry-100 w-full">
                   "
                 </h6>
@@ -89,7 +89,7 @@ const Reviews = () => {
                 </div>
 
                 <div className="rounded-full w-16 h-16 py-2 px-2 bg-sec flex flex-col justify-center items-center ">
-                  <div className="bg-pry-100 rounded-full w-4/5 h-4/5 py-4">
+                  <div className="bg-pry-100 rounded-full w-4/5 h-4/5 py-2">
                     <Image src={review.image} alt="boss" />
                   </div>
                 </div>

@@ -1,4 +1,13 @@
-import { Header, Services, About, Reviews, Team } from "./components";
+import {
+  Header,
+  Services,
+  About,
+  Reviews,
+  Team,
+  TrackShipment,
+  Blog,
+  Contact,
+} from "./components";
 
 export default function Home() {
   return (
@@ -11,6 +20,9 @@ export default function Home() {
         <About />
         <Team />
         <Reviews />
+        <TrackShipment />
+        <Blog />
+        <Contact />
       </main>
     </>
   );

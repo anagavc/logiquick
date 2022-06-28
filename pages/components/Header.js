@@ -24,7 +24,7 @@ const Header = () => {
             <Button
               name="Track your order"
               bgColor="sec"
-              py="2"
+              py="4"
               text="pry-50"
               hoverText="pry-100"
               hoverBg="pry-50"
