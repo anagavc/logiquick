@@ -6,11 +6,11 @@ import { SectionTitle, Paragraph } from "./FontStyles";
 
 const About = () => {
   return (
-    <div className="bg-pry-100 px-36 py-24 flex justify-between">
-      <div className="flex justify-center items-center w-2/5">
+    <div className="bg-pry-100 lg:px-36 px-8 py-24 flex flex-col lg:flex-row justify-between gap-4">
+      <div className="flex justify-center items-center  w-full lg:w-2/5">
         <Image src={about} alt="About" />
       </div>
-      <div className="flex flex-col w-2/5 space-y-4 justify-center">
+      <div className="flex flex-col  w-full lg:w-2/5 space-y-4 justify-center">
         <SectionTitle title="About" />
         <h3 className="text-pry-50 text-3xl font-bold font-heading">
           <span className="text-sec">Efficient</span> handling of goods and

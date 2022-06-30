@@ -26,7 +26,8 @@ const Reviews = () => {
 
       reviewer: "Adams Andy",
       image: reviewer2,
-      review: '"Impressive customer service,I was delighted with my purchase"',
+      review:
+        '"Impressive customer service,I was delighted with my shipment, I will use them again."',
       designation: "Digital marketer",
     },
     {
@@ -40,9 +41,9 @@ const Reviews = () => {
     },
   ];
   return (
-    <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 px-24  space-y-12">
+    <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 lg:px-24 px-8 space-y-12">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-pry-50 text-3xl font-bold font-heading">
+        <h3 className="text-pry-50 text-3xl font-bold font-heading text-center">
           What Our <span className="text-sec">Clients</span> Have To Say
         </h3>
         <Paragraph

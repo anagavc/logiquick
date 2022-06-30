@@ -37,3 +37,13 @@ export const Button = ({
     </>
   );
 };
+
+export const FooterIcon = ({ path, icon }) => {
+  return (
+    <Link href={path}>
+      <a className="text-pry-50 hover:text-sec transition duration-300">
+        {icon}
+      </a>
+    </Link>
+  );
+};

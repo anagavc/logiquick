@@ -1,7 +1,13 @@
 import React from "react";
 import { HeadingSix, Paragraph } from "./FontStyles";
 import Input from "./Input";
+import Image from "next/image";
 import { Button } from "./Buttons";
+import contact from "../../images/contact.svg";
+import LocationCityIcon from "@mui/icons-material/LocationCity";
+import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
+import EmailIcon from "@mui/icons-material/Email";
+import LanguageIcon from "@mui/icons-material/Language";
 const Contact = () => {
   const inputs = [
     {
@@ -36,8 +42,31 @@ const Contact = () => {
       options: ["Road", "Air", "Bike"],
     },
   ];
+  const contactDetails = [
+    {
+      icon: <LocationCityIcon />,
+      name: "our office address",
+      info: "    No.2 Shelter Afrique, Uyo,AkwaIbom State",
+    },
+    {
+      icon: <QuestionAnswerIcon />,
+      name: "Let us talk",
+      info: "+234-123-4567-890",
+    },
+    {
+      icon: <EmailIcon />,
+      name: "Mail us",
+      info: "support@logiquick.netlify.app",
+    },
+    {
+      icon: <LanguageIcon />,
+      name: "Our website",
+      info: "www.logiquick.netlify",
+    },
+  ];
+
   return (
-    <div className="bg-pry-50 flex flex-col w-full justify-between items-center py-24 px-24  space-y-12">
+    <div className="bg-pry-50 flex flex-col w-full justify-between items-center py-24 px-4 lg:px-24  space-y-12">
       <div className="flex flex-col items-center justify-center">
         <h3 className="text-pry-100 text-3xl font-bold font-heading">
           <span className="text-sec">Contact</span> Us
@@ -48,8 +77,8 @@ const Contact = () => {
           title="Send us a request to get a cost estimate for your shipment"
         />
       </div>
-      <div className=" flex  justify-between w-full  bg-pry-100  rounded py-12 space-y-8 px-12">
-        <form className="w-2/5 space-y-4  flex flex-col bg-pry-50 rounded px-6 py-6 border-y-4 border-y-sec">
+      <div className=" flex  lg:flex-row flex-col justify-between w-full  bg-pry-100  rounded py-12 space-y-8 px-4 lg:px-12">
+        <form className=" w-full lg:w-2/5 space-y-4  flex flex-col bg-pry-50 rounded py-6 px-6 lg:pt-6 border-y-4 border-y-sec">
           <HeadingSix
             title="Request a quote"
             color="pry-100"
@@ -63,6 +92,7 @@ const Contact = () => {
               placeholder={input.placeholder}
               type={input.type}
               options={input.options}
+              key={input.inputName}
             />
           ))}
           <Button
@@ -75,11 +105,33 @@ const Contact = () => {
             hoverBg="sec"
           />
         </form>
-        <div className="w-3/5 px-12 flex flex-col space-y-2">
-          <h6 className="text-lg text-center text-pry-50 tracking-tight font-heading  font-bold border-b border-b-pry-50 w-full">
+        <div className="w-full lg:w-3/5 px-4 lg:px-12 flex flex-col space-y-6 ">
+          <h6 className="text-lg text-center text-pry-50 tracking-tight font-body uppercase   border-b border-b-pry-50 w-full">
             Our contact information
           </h6>
-          <div className="flex justify-between"></div>
+          <div className="flex flex-wrap flex-col lg:flex-row space-y-2 w-full justify-between ">
+            {contactDetails.map((detail, index) => {
+              return (
+                <div
+                  className="flex flex-col space-y-4 justify-between w-full lg:w-3/6"
+                  key={index}
+                >
+                  <div className="bg-pry-100 w-8 h-8 text-sec flex justify-center items-center px-4 py-4">
+                    {detail.icon}
+                  </div>
+                  <h5 className="font-body uppercase tracking-widest font-medium text-pry-50">
+                    {detail.name}
+                  </h5>
+                  <p className="font-body text-base text-pry-50">
+                    {detail.info}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="w-full lg:w-2/5 self-end justify-self-end">
+            <Image src={contact} alt="contact" />
+          </div>
         </div>
       </div>
     </div>

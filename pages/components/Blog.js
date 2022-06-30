@@ -5,9 +5,9 @@ import { HeadingSix, Paragraph } from "./FontStyles";
 import { Button } from "./Buttons";
 const Blog = () => {
   return (
-    <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 px-24  space-y-12">
+    <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 px-8 lg:px-24  space-y-12">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-pry-50 text-3xl font-bold font-heading">
+        <h3 className="text-pry-50 text-3xl font-bold text-center font-heading">
           Latest <span className="text-sec">News</span>
         </h3>
         <Paragraph
@@ -16,8 +16,8 @@ const Blog = () => {
           title="Here are some of things we have recently been up to at LogiQuick"
         />
       </div>
-      <div className="flex justify-between space-x-8 w-full">
-        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-2/6">
+      <div className="flex lg:flex-row flex-col justify-between gap-4 lg:space-x-8 w-full">
+        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec  w-full lg:w-2/6">
           <div className="w-full">
             <Image src={news1} alt="news" />
           </div>
@@ -44,7 +44,7 @@ available for conveying your products to its final destination"
             path="/readMore"
           />
         </div>
-        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-2/6">
+        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-full lg:w-2/6">
           <div className="w-full">
             <Image src={news1} alt="news" />
           </div>
@@ -71,7 +71,7 @@ available for conveying your products to its final destination"
             path="/readMore"
           />
         </div>
-        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-2/6">
+        <div className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-full lg:w-2/6">
           <div className="w-full">
             <Image src={news1} alt="news" />
           </div>
@@ -91,7 +91,7 @@ available for conveying your products to its final destination"
             bgColor="pry-100"
             square="true"
             py="4"
-            width="3/5"
+            width="full"
             text="pry-50"
             hoverText="pry-50"
             hoverBg="sec"

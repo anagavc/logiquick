@@ -8,9 +8,9 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Link from "next/link";
 const Team = () => {
   return (
-    <div className="bg-pry-50 flex flex-col justify-center items-center py-24 px-24 space-y-6">
+    <div className="bg-pry-50 flex flex-col justify-center items-center py-24 px-8 lg:px-24 space-y-6 w-full">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-pry-100 text-3xl font-bold font-heading">
+        <h3 className="text-pry-100 text-3xl text-center font-bold font-heading">
           Meet the <span className="text-sec">Team</span>
         </h3>
         <Paragraph
@@ -19,8 +19,8 @@ const Team = () => {
           title="The amazing team that is here to ensure you have an amazing courier experience"
         />
       </div>
-      <div className="flex justify-between w-full space-x-4">
-        <div className="bg-pry-100 flex flex-col w-96 px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
+      <div className="flex flex-col lg:flex-row gap-6 justify-between w-full lg:space-x-4">
+        <div className="bg-pry-100 flex flex-col lg:w-96 w-full px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
           <div className="rounded-full w-36 h-36 py-2 px-2 bg-pry-50 flex flex-col justify-center items-center ">
             <div className="bg-sec rounded-full w-4/5 h-4/5 py-4">
               <Image src={staff1} alt="boss" objectFit="cover" />
@@ -40,7 +40,7 @@ const Team = () => {
             />
           </div>
         </div>
-        <div className="bg-pry-100 flex flex-col w-96 px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
+        <div className="bg-pry-100 flex flex-col lg:w-96 w-full px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
           <div className="rounded-full w-36 h-36 py-2 px-2 bg-pry-50 flex flex-col justify-center items-center ">
             <div className="bg-sec rounded-full w-4/5 h-4/5 py-4">
               <Image src={staff1} alt="boss" />
@@ -77,7 +77,7 @@ const Team = () => {
             </div>
           </div>
         </div>
-        <div className="bg-pry-100 flex flex-col w-96 px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
+        <div className="bg-pry-100 flex flex-col lg:w-96 w-full px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
           <div className="rounded-full w-36 h-36 py-2 px-2 bg-pry-50 flex flex-col justify-center items-center ">
             <div className="bg-sec rounded-full w-4/5 h-4/5 py-4">
               <Image src={staff1} alt="boss" />

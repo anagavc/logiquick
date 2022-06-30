@@ -3,9 +3,9 @@ import { Paragraph } from "./FontStyles";
 import FlightTakeoff from "@mui/icons-material/FlightTakeoff";
 const Services = () => {
   return (
-    <div className="bg-pry-50 flex flex-col justify-center items-center py-24 px-24 space-y-6">
+    <div className="bg-pry-50 flex flex-col justify-center items-center py-24 px-8 lg:px-24 space-y-6">
       <div className="flex flex-col items-center justify-center">
-        <h3 className="text-pry-100 text-3xl font-bold font-heading">
+        <h3 className="text-pry-100 text-3xl text-center font-bold font-heading">
           <span className="text-sec">Services</span> that we offer
         </h3>
         <Paragraph
@@ -15,7 +15,7 @@ const Services = () => {
         />
       </div>
 
-      <div className="flex justify-between space-x-6 w-full">
+      <div className="flex flex-col lg:flex-row justify-between gap-8 lg:space-x-6 w-full">
         <div className="bg-pry-100 drop-shadow px-8 py-8 border-y-4 border-y-sec h-72 rounded flex-1 flex flex-col items-center hover:scale-100 space-y-6  transition duration-300">
           <div className="bg-sec rounded-full border-8 border-pry-50 flex justify-center items-center text-pry-50 h-20 w-20 py-8">
             <FlightTakeoff sx={{ width: 100 }} />
