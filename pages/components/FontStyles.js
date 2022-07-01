@@ -8,7 +8,9 @@ export const SectionTitle = ({ title }) => {
 };
 export const Paragraph = ({ title, color, align }) => {
   return (
-    <p className={`text-${align} font-body text-base text-${color}`}>{title}</p>
+    <p className={` text-${align} font-body text-base text-${color}`}>
+      {title}
+    </p>
   );
 };
 export const HeadingSix = ({ title, color, align, size }) => {

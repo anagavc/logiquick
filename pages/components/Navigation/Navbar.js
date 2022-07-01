@@ -24,7 +24,7 @@ export const Navbar = () => {
     },
     {
       name: "Blog",
-      path: "/",
+      path: "/blog",
     },
     {
       name: "Contact",

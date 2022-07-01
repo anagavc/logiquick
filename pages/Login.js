@@ -82,7 +82,7 @@ const Login = () => {
           </form>
         </div>
 
-        <div className="bg-pry-100 flex-1 p-12 hidden md:flex flex-col items-center justify-center space-y-4 h-full">
+        <div className="bg-pry-100 flex-1 p-12 hidden md:flex flex-col items-center justify-center space-y-4 ">
           <HeadingSix color="pry-50" title="Welcome Back" align="center" />
           <div className="h-3/5 w-3/5">
             <Image src={loginImage} alt="welcome" />

@@ -26,8 +26,8 @@ const Register = () => {
           You have entered an invalid username or password
         </p>
       )} */}
-      <div className="flex justify-between items-center h-full w-full drop-shadow rounded bg-pry-50 ">
-        <div className="md:flex-1 px-4 py-12 w-full md:p-12 space-y-6">
+      <div className="flex justify-between  h-full w-full drop-shadow rounded ">
+        <div className="md:flex-1 px-4 py-12 w-full md:p-12 space-y-6 bg-pry-50 ">
           <HeadingSix
             title="Registration information"
             color="pry-100"
