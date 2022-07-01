@@ -1,5 +1,5 @@
-import React from "react";
-import { HeadingSix, Paragraph } from "./FontStyles";
+import React, { useState } from "react";
+import { Paragraph } from "./FontStyles";
 import Input from "./Input";
 import Image from "next/image";
 import { Button } from "./Buttons";
@@ -8,31 +8,51 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import EmailIcon from "@mui/icons-material/Email";
 import LanguageIcon from "@mui/icons-material/Language";
+import { useForm } from "react-hook-form";
+
 const Contact = () => {
+  const [quote, setQuote] = useState({});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data) => {
+    setQuote(data);
+    console.log(quote);
+  };
   const inputs = [
     {
       title: "Email",
       inputName: "email",
       placeholder: "Enter your email address",
       type: "email",
+      register: register,
+      errors: errors,
     },
     {
       title: "Your location",
       inputName: "location",
       placeholder: "Enter your location",
       type: "text",
+      register: register,
+      errors: errors,
     },
     {
       title: "Destination",
       inputName: "destination",
       placeholder: "Enter the destination of the item",
       type: "text",
+      register: register,
+      errors: errors,
     },
     {
       title: "Item type",
       inputName: "itemType",
       placeholder: "Enter the type of item",
       type: "text",
+      register: register,
+      errors: errors,
     },
     {
       title: "Freight type",
@@ -40,6 +60,8 @@ const Contact = () => {
       placeholder: "Enter the type of item",
       type: "select",
       options: ["Road", "Air", "Bike"],
+      register: register,
+      errors: errors,
     },
   ];
   const contactDetails = [
@@ -48,6 +70,7 @@ const Contact = () => {
       name: "our office address",
       info: "    No.2 Shelter Afrique, Uyo,AkwaIbom State",
     },
+
     {
       icon: <QuestionAnswerIcon />,
       name: "Let us talk",
@@ -78,13 +101,13 @@ const Contact = () => {
         />
       </div>
       <div className=" flex  lg:flex-row flex-col justify-between w-full  bg-pry-100  rounded py-12 space-y-8 px-4 lg:px-12">
-        <form className=" w-full lg:w-2/5 space-y-4  flex flex-col bg-pry-50 rounded py-6 px-6 lg:pt-6 border-y-4 border-y-sec">
-          <HeadingSix
-            title="Request a quote"
-            color="pry-100"
-            size="lg"
-            align="center"
-          />
+        <form
+          className=" w-full lg:w-2/5 space-y-4  flex flex-col bg-pry-50 rounded py-6 px-6 lg:pt-6 border-y-4 border-y-sec"
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <h6 className="text-xl text-center text-pry-100 tracking-tight font-body    w-full">
+            Request a quote
+          </h6>
           {inputs.map((input) => (
             <Input
               title={input.title}
@@ -93,6 +116,8 @@ const Contact = () => {
               type={input.type}
               options={input.options}
               key={input.inputName}
+              register={input.register}
+              errors={input.errors}
             />
           ))}
           <Button

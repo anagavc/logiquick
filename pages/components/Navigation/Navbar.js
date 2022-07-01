@@ -73,7 +73,7 @@ export const Navbar = () => {
       </div>
       <div className="lg:flex  items-center hidden  space-x-8  justify-center  px-12 lg:py-2 pb-12  lg:static bg-pry-100 lg:z-40 z-40 w-full lg:w-auto lg:px-0">
         <div className="flex justify-center items-center space-x-8">
-          <NavItem path="/login" key="loginButton" name="Login" />
+          <NavItem path="/Login" key="loginButton" name="Login" />
           <Button
             name="Register"
             bgColor="sec"
@@ -81,7 +81,7 @@ export const Navbar = () => {
             text="pry-50"
             hoverText="pry-100"
             hoverBg="pry-50"
-            path="/register"
+            path="/Register"
           />
         </div>
       </div>

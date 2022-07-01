@@ -1,8 +1,17 @@
 import React from "react";
 
-const Input = ({ inputName, title, type, placeholder, options }) => {
+const Input = ({
+  inputName,
+  title,
+  type,
+  placeholder,
+  options,
+  register,
+  errors,
+  errorColor,
+}) => {
   const inputStyle =
-    "px-4  py-2  placeholder:text-pry-100 text-pry-100 bg-pry-50 border border-pry-100 border-b-2 border-b-sec focus:outline-none  focus:border-sec transition focus:ring-sec focus:ring-1 duration-300 w-full";
+    "px-4  py-2  placeholder:text-pry-100 text-pry-100 bg-pry-50 border border-pry-100  focus:outline-none  focus:border-sec transition focus:ring-sec focus:ring-1 duration-300 w-full";
   return (
     <>
       {type === "select" ? (
@@ -13,7 +22,16 @@ const Input = ({ inputName, title, type, placeholder, options }) => {
           >
             {title}
           </label>
-          <select className={inputStyle} name={inputName}>
+          <select
+            className={inputStyle}
+            name={inputName}
+            id={inputName}
+            {...register(inputName, {
+              required: `${title} is required`,
+
+              message: `${title} must be selected`,
+            })}
+          >
             {options?.map((option) => (
               <option value={option}>{option}</option>
             ))}
@@ -30,11 +48,24 @@ const Input = ({ inputName, title, type, placeholder, options }) => {
           <input
             placeholder={placeholder}
             name={inputName}
-            id={inputName}
             type={type}
             className={inputStyle}
+            id={inputName}
+            {...register(inputName, {
+              required: `${title} is required`,
+              minLength: {
+                value: 4,
+                message: `${title} must be more than 4 characters`,
+              },
+            })}
           />
-          <p className="text-pry-100 font-normal text-sm font-body py-"></p>
+          <p
+            className={` ${
+              errorColor && errorColor
+            } text-pry-100 font-normal text-sm font-body`}
+          >
+            {errors[inputName] && errors[inputName]?.message}
+          </p>
         </div>
       )}
     </>

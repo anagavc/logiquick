@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import ClipLoader from "react-spinners/ClipLoader";
 export const Button = ({
   name,
   path,
@@ -11,8 +12,11 @@ export const Button = ({
   hoverBg,
   text,
   width,
+  isLoading,
   square,
 }) => {
+  let loading = true;
+  let color = { text };
   const buttonStyle = `
   md:mr-0 text-base ${bgColor && `bg-${bgColor}`} py-${py} ${
     borderColor && `border border-${borderColor}`
@@ -30,7 +34,7 @@ export const Button = ({
           </a>
         </Link>
       ) : (
-        <button className={buttonStyle} onClick={click}>
+        <button type="submit" className={buttonStyle} onClick={click}>
           {name}
         </button>
       )}
