@@ -6,8 +6,13 @@ import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import Link from "next/link";
-import { HeadingSix, Paragraph, SectionTitle } from "../components/FontStyles";
-import { Button } from "../components/Buttons";
+
+import {
+  HeadingSix,
+  Paragraph,
+  SectionTitle,
+} from "../../components/FontStyles";
+import { Button } from "../../components/Buttons";
 const About = () => {
   return (
     <div className="bg-pry-50 px-8 md:px-24 py-24 flex flex-col justify-between  w-full space-y-4">
@@ -127,12 +132,12 @@ const About = () => {
 
       <Button
         name="Back"
-        bgColor="sec"
+        bgColor="pry-100"
         py="2"
         square="true"
         text="pry-50"
         hoverText="pry-50"
-        hoverBg="pry-100"
+        hoverBg="sec"
         path="/"
       />
     </div>

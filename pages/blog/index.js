@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import news1 from "../../images/news1.jpg";
-import { HeadingSix, Paragraph } from "../components/FontStyles";
-import { Button } from "../components/Buttons";
+import { HeadingSix, Paragraph } from "../../components/FontStyles";
+import { Button } from "../../components/Buttons";
 const Blog = () => {
   return (
     <div className="bg-pry-50 px-8 md:px-24 py-24 flex flex-col justify-between  w-full space-y-4">

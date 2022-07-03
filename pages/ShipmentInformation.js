@@ -1,8 +1,8 @@
 import React from "react";
 import Image from "next/image";
 import shipmentImage from "../images/shipment.svg";
-import { HeadingSix, Paragraph } from "./components/FontStyles";
-import { Button } from "./components/Buttons";
+import { HeadingSix, Paragraph } from "../components/FontStyles";
+import { Button } from "../components/Buttons";
 const ShipmentInformation = () => {
   return (
     <div className="bg-pry-50 px-8 md:px-24 py-24 flex flex-col justify-between  w-full space-y-4">

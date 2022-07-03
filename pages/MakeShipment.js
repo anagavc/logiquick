@@ -1,21 +1,49 @@
 import React, { useState } from "react";
-import { HeadingSix, Paragraph } from "./components/FontStyles";
+import { loadStripe } from "@stripe/stripe-js";
+import { HeadingSix, Paragraph } from "../components/FontStyles";
 import shipmentImage from "../images/about.svg";
-import { Button } from "./components/Buttons";
+import { Button } from "../components/Buttons";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import {
+  createShipmentStart,
+  createShipmentSuccess,
+  createShipmentFailure,
+} from "../redux/shipmentSlice";
+import getStripe from "../lib/getStripe";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import Link from "next/link";
-import Input from "./components/Input";
+import Input from "../components/Input";
 import { useForm } from "react-hook-form";
 const MakeShipment = () => {
-  const [shipment, setShipment] = useState({});
+  const router = useRouter();
+
+  const { error, isFetching, shipment } = useSelector(
+    (state) => state.shipment
+  );
+  const dispatch = useDispatch();
+  console.log(shipment?.trackingNo);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = async (data) => {
-    setShipment(data);
-    console.log(shipment);
+    dispatch(createShipmentStart());
+    try {
+      const stripe = await loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      );
+      const res = await axios.post("/api/shipment/makeShipment", data);
+      dispatch(createShipmentSuccess(res.data));
+      const stripeResponse = await axios.post("/api/stripe/stripe", data);
+      const stripeData = await stripeResponse.data;
+      stripe.redirectToCheckout({ sessionId: stripeData.id });
+    } catch (error) {
+      console.log(error);
+      dispatch(createShipmentFailure());
+    }
   };
   const inputs = [
     {
@@ -60,7 +88,7 @@ const MakeShipment = () => {
     },
     {
       title: "Freight type",
-      inputName: "Freight type",
+      inputName: "freightType",
       placeholder: "Enter the type of item",
       type: "select",
       options: ["Road", "Air", "Bike"],
@@ -73,11 +101,11 @@ const MakeShipment = () => {
       <p className="text-pry-100  font-body text-lg font-medium ">
         Make shipment
       </p>
-      {/* {error && (
+      {error && (
         <p className="text-pry-100 font-normal text-sm font-body">
-          You have entered an invalid Shipmentname or password
+          Please check the shipment detail you have met
         </p>
-      )} */}
+      )}
       <div className="flex justify-between h-full w-full drop-shadow rounded  ">
         <div className="md:flex-1 px-4 py-12 w-full md:p-12 space-y-6 bg-pry-50">
           <HeadingSix
@@ -104,8 +132,9 @@ const MakeShipment = () => {
 
             <div>
               <Button
-                name="Make Shipment"
+                name="Make Payment"
                 bgColor="pry-100"
+                // isFetching={isFetching}
                 square="true"
                 py="3"
                 width="full"

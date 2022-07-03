@@ -1,6 +1,7 @@
 import Link from "next/link";
+import { useSelector } from "react-redux";
 const Account = (props) => {
-  // const user = useSelector((state) => state.user.currentUser);
+  const user = useSelector((state) => state.user.currentUser);
 
   return (
     <div className="w-full bg-pry-50 items-center justify-center  flex h-full pt-32 pb-20 px-4 lg:px-0">
@@ -18,10 +19,8 @@ const Account = (props) => {
             </div>
             <div className="border-l border-l-pry-50 justify-start"></div>
             <div className="flex flex-col justify-between space-y-6">
-              <p className="text-pry-50 text-base font-body ">Emeka</p>
-              <p className="text-pry-50 text-base font-body ">
-                emeka@gmail.com
-              </p>
+              <p className="text-pry-50 text-base font-body ">{user?.name}</p>
+              <p className="text-pry-50 text-base font-body ">{user?.email}</p>
             </div>
           </div>
 

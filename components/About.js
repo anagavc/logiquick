@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import about from "../../images/about.svg";
+import about from "../images/about.svg";
 import { Button } from "./Buttons";
 import { SectionTitle, Paragraph } from "./FontStyles";
 

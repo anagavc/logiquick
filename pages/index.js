@@ -1,3 +1,4 @@
+import { client } from "../lib/client";
 import {
   Header,
   Services,
@@ -7,9 +8,9 @@ import {
   TrackShipment,
   Blog,
   Contact,
-} from "./components";
+} from "../components";
 
-export default function Home() {
+export default function Home({ reviewsData }) {
   return (
     <>
       <header>
@@ -19,7 +20,7 @@ export default function Home() {
         <Services />
         <About />
         <Team />
-        <Reviews />
+        <Reviews reviews={reviewsData.length && reviewsData} />
         <TrackShipment />
         <Blog />
         <Contact />
@@ -27,3 +28,10 @@ export default function Home() {
     </>
   );
 }
+export const getServerSideProps = async () => {
+  const reviewsQuery = '*[_type=="reviews"]';
+  const reviewsData = await client.fetch(reviewsQuery);
+  return {
+    props: { reviewsData },
+  };
+};

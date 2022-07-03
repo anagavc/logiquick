@@ -12,7 +12,7 @@ export const Button = ({
   hoverBg,
   text,
   width,
-  isLoading,
+  isFetching,
   square,
 }) => {
   let loading = true;
@@ -34,8 +34,17 @@ export const Button = ({
           </a>
         </Link>
       ) : (
-        <button type="submit" className={buttonStyle} onClick={click}>
-          {name}
+        <button
+          type="submit"
+          className={buttonStyle}
+          onClick={click}
+          disabled={isFetching}
+        >
+          {isFetching ? (
+            <ClipLoader color={color} loading={loading} size={25} />
+          ) : (
+            <span>{name}</span>
+          )}
         </button>
       )}
     </>

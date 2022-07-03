@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import news1 from "../../images/news1.jpg";
+import news1 from "../images/news1.jpg";
 import { HeadingSix, Paragraph } from "./FontStyles";
 import { Button } from "./Buttons";
 const Blog = () => {

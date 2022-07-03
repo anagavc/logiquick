@@ -1,7 +1,7 @@
 import React from "react";
 import { Paragraph } from "./FontStyles";
 import Image from "next/image";
-import staff1 from "../../images/staff1.png";
+import staff1 from "../images/staff1.png";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";

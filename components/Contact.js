@@ -3,7 +3,7 @@ import { Paragraph } from "./FontStyles";
 import Input from "./Input";
 import Image from "next/image";
 import { Button } from "./Buttons";
-import contact from "../../images/contact.svg";
+import contact from "../images/contact.svg";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import QuestionAnswerIcon from "@mui/icons-material/QuestionAnswer";
 import EmailIcon from "@mui/icons-material/Email";

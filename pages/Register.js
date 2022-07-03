@@ -1,22 +1,42 @@
 import React, { useState } from "react";
-import { HeadingSix, Paragraph } from "./components/FontStyles";
+import axios from "axios";
+import { HeadingSix, Paragraph } from "../components/FontStyles";
+import {
+  registrationStart,
+  registrationSuccess,
+  registrationFailure,
+} from "../redux/userSlice";
 import registerImage from "../images/register.svg";
-import { Button } from "./components/Buttons";
+import { Button } from "../components/Buttons";
 import Image from "next/image";
 import Link from "next/link";
-import Input from "./components/Input";
+import { useRouter } from "next/router";
+import Input from "../components/Input";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 const Register = () => {
-  const [user, setUser] = useState({});
+  const router = useRouter();
+  const { redirect } = router.query;
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = async (data) => {
-    await data;
-    setUser(data);
-    console.log(user);
+  const onSubmit = async ({ email, name, password }) => {
+    dispatch(registrationStart());
+    try {
+      const { data } = await axios.post("/api/users/register", {
+        email,
+        name,
+        password,
+      });
+      dispatch(registrationSuccess(data));
+      router.push(redirect || "/account");
+    } catch (err) {
+      console.log(err);
+      dispatch(registrationFailure());
+    }
   };
   return (
     <div className="bg-pry-50 px-8 md:px-24 py-24 flex flex-col justify-between  w-full space-y-4">
@@ -37,7 +57,82 @@ const Register = () => {
             className="flex w-full flex-col  justify-between space-y-8"
             onSubmit={handleSubmit(onSubmit)}
           >
-            <Input
+            <div className="flex flex-col w-full" key="email">
+              <label
+                htmlFor="email"
+                className="text-base text-pry-100 font-heading"
+              >
+                Email
+              </label>
+              <input
+                placeholder="Email"
+                name="email"
+                type="email"
+                className="px-4  py-2  placeholder:text-pry-100 text-pry-100 bg-pry-50 border border-pry-100  focus:outline-none  focus:border-sec transition focus:ring-sec focus:ring-1 duration-300 w-full"
+                id="email"
+                {...register("email", {
+                  required: `email is required`,
+                  minLength: {
+                    value: 4,
+                    message: `email must be more than 4 characters`,
+                  },
+                })}
+              />
+              <p className={` text-pry-100 font-normal text-sm font-body`}>
+                {errors["email"] && errors["email"]?.message}
+              </p>
+            </div>
+            <div className="flex flex-col w-full" key="email">
+              <label
+                htmlFor="name"
+                className="text-base text-pry-100 font-heading"
+              >
+                name
+              </label>
+              <input
+                placeholder="name"
+                name="name"
+                type="name"
+                className="px-4  py-2  placeholder:text-pry-100 text-pry-100 bg-pry-50 border border-pry-100  focus:outline-none  focus:border-sec transition focus:ring-sec focus:ring-1 duration-300 w-full"
+                id="name"
+                {...register("name", {
+                  required: `name is required`,
+                  minLength: {
+                    value: 4,
+                    message: `name must be more than 4 characters`,
+                  },
+                })}
+              />
+              <p className={` text-pry-100 font-normal text-sm font-body`}>
+                {errors["name"] && errors["name"]?.message}
+              </p>
+            </div>
+            <div className="flex flex-col w-full" key="password">
+              <label
+                htmlFor="password"
+                className="text-base text-pry-100 font-heading"
+              >
+                password
+              </label>
+              <input
+                placeholder="password"
+                name="password"
+                type="password"
+                className="px-4  py-2  placeholder:text-pry-100 text-pry-100 bg-pry-50 border border-pry-100  focus:outline-none  focus:border-sec transition focus:ring-sec focus:ring-1 duration-300 w-full"
+                id="password"
+                {...register("password", {
+                  required: `password is required`,
+                  minLength: {
+                    value: 4,
+                    message: `password must be more than 4 characters`,
+                  },
+                })}
+              />
+              <p className={` text-pry-100 font-normal text-sm font-body`}>
+                {errors["password"] && errors["password"]?.message}
+              </p>
+            </div>
+            {/* <Input
               placeholder="Enter your email address"
               inputName="email"
               id="email"
@@ -47,7 +142,7 @@ const Register = () => {
               errors={errors}
             />
             <Input
-              placeholder="Enter a username"
+              placeholder="Enter a name"
               inputName="username"
               id="username"
               type="text"
@@ -64,7 +159,7 @@ const Register = () => {
               type="password"
               register={register}
               errors={errors}
-            />
+            /> */}
 
             <div>
               <Button

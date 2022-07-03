@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { HeadingSix, Paragraph } from "./FontStyles";
-import reviewer1 from "../../images/staff1.png";
-import reviewer2 from "../../images/staff2.png";
-import reviewer3 from "../../images/staff3.png";
+import { urlFor } from "../lib/client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/bundle";
@@ -11,35 +9,9 @@ import "swiper/css/pagination";
 import SwiperCore, { Pagination, Autoplay, EffectFade } from "swiper";
 SwiperCore.use([Pagination, Autoplay, EffectFade]);
 
-const Reviews = () => {
-  const reviews = [
-    {
-      id: "review1",
-      reviewer: "Jessica Banks",
-      image: reviewer1,
-      review:
-        '"They were extremely reliable and delivered way beyond my expectation"',
-      designation: "Realtor",
-    },
-    {
-      id: "review2",
+const Reviews = ({ reviews }) => {
+  console.log(reviews);
 
-      reviewer: "Adams Andy",
-      image: reviewer2,
-      review:
-        '"Impressive customer service,I was delighted with my shipment, I will use them again."',
-      designation: "Digital marketer",
-    },
-    {
-      id: "review3",
-
-      reviewer: "James Fred",
-      image: reviewer3,
-      review:
-        ' "Will definitely be back because there was always someone on hand to meet my needs."',
-      designation: "Entrepreneur",
-    },
-  ];
   return (
     <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 lg:px-24 px-8 space-y-12">
       <div className="flex flex-col items-center justify-center">
@@ -73,9 +45,9 @@ const Reviews = () => {
         }}
         className="flex  w-full"
       >
-        {reviews.map((review, index) => {
+        {reviews?.map((review) => {
           return (
-            <SwiperSlide key={review.reviewer}>
+            <SwiperSlide key={review.slug}>
               <div className="flex flex-col space-y-4 w-full py-8 px-6 rounded  items-center  border-x-4 drop-shadow border-x-sec  bg-pry-50 ">
                 <h6 className="text-xl text-pry-100 font-heading text-center  font-bold border-b border-b-pry-100 w-full">
                   "
@@ -91,7 +63,7 @@ const Reviews = () => {
 
                 <div className="rounded-full w-16 h-16 py-2 px-2 bg-sec flex flex-col justify-center items-center ">
                   <div className="bg-pry-100 rounded-full w-4/5 h-4/5 py-2">
-                    <Image src={review.image} alt="boss" />
+                    <img src={urlFor(review.image)} alt={review.reviewer} />
                   </div>
                 </div>
                 <div className="flex flex-col space-y-2">

@@ -3,9 +3,14 @@ import Link from "next/link";
 import { Close, Menu } from "@mui/icons-material";
 import NavItem from "./NavItem";
 import { Button } from "../Buttons";
+import { useRouter } from "next/router";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutSuccess } from "../../redux/userSlice";
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
-  const currentUser = true;
+  const router = useRouter();
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.user);
   const handleClose = () => {
     setOpen(!open);
   };
@@ -31,7 +36,10 @@ export const Navbar = () => {
       path: "/contact",
     },
   ];
-
+  const logoutHandler = () => {
+    dispatch(logoutSuccess());
+    router.push("/Login");
+  };
   return (
     <div className="border-b-4 border-b-sec flex justify-between w-full fixed top-0 left-0 bg-pry-100 px-12 z-50">
       <div className="flex justify-start items-center lg:py-3 lg:px-10  py-4 z-10">
@@ -73,16 +81,34 @@ export const Navbar = () => {
       </div>
       <div className="lg:flex  items-center hidden  space-x-8  justify-center  px-12 lg:py-2 pb-12  lg:static bg-pry-100 lg:z-40 z-40 w-full lg:w-auto lg:px-0">
         <div className="flex justify-center items-center space-x-8">
-          <NavItem path="/Login" key="loginButton" name="Login" />
-          <Button
-            name="Register"
-            bgColor="sec"
-            py="2"
-            text="pry-50"
-            hoverText="pry-100"
-            hoverBg="pry-50"
-            path="/Register"
-          />
+          {currentUser ? (
+            <>
+              <NavItem path="/account" key="accountButton" name="Account" />
+
+              <Button
+                name="Signout"
+                bgColor="sec"
+                py="2"
+                text="pry-50"
+                hoverText="pry-100"
+                hoverBg="pry-50"
+                click={logoutHandler}
+              />
+            </>
+          ) : (
+            <>
+              <NavItem path="/Login" key="loginButton" name="Login" />
+              <Button
+                name="Register"
+                bgColor="sec"
+                py="2"
+                text="pry-50"
+                hoverText="pry-100"
+                hoverBg="pry-50"
+                path="/Register"
+              />
+            </>
+          )}
         </div>
       </div>
     </div>

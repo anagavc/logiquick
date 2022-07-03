@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./Buttons";
 import Image from "next/Image";
-import heroImg from "../../images/heroImg.svg";
+import heroImg from "../images/heroImg.svg";
 const Header = () => {
   return (
     <div className="flex  flex-col justify-between items-center bg-pry-100 mt-16 lg:mt-0 lg:py-28 py-12 px-12 lg:px-24 lg:h-screen w-full">
