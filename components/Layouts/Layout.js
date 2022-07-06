@@ -8,6 +8,7 @@ const Layout = ({ children }) => {
     <div>
       <Head>
         <title>LogiQuick</title>
+        <link rel="icon" href="/favicon.png" />
       </Head>
       <navbar>
         <Navbar />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import { loadStripe } from "@stripe/stripe-js";
 import { HeadingSix, Paragraph } from "../components/FontStyles";
 import shipmentImage from "../images/about.svg";
@@ -10,8 +11,7 @@ import {
   createShipmentSuccess,
   createShipmentFailure,
 } from "../redux/shipmentSlice";
-import getStripe from "../lib/getStripe";
-import { useRouter } from "next/router";
+
 import Image from "next/image";
 import Link from "next/link";
 import Input from "../components/Input";
@@ -19,11 +19,15 @@ import { useForm } from "react-hook-form";
 const MakeShipment = () => {
   const router = useRouter();
 
+  const { currentUser } = useSelector((state) => state.user);
+
   const { error, isFetching, shipment } = useSelector(
     (state) => state.shipment
   );
   const dispatch = useDispatch();
-  console.log(shipment?.trackingNo);
+  if (!currentUser) {
+    router.push("/Login");
+  }
   const {
     register,
     handleSubmit,
@@ -35,7 +39,11 @@ const MakeShipment = () => {
       const stripe = await loadStripe(
         process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
       );
-      const res = await axios.post("/api/shipment/makeShipment", data);
+      const res = await axios.post("/api/shipment/makeShipment", {
+        data,
+        currentUser,
+      });
+
       dispatch(createShipmentSuccess(res.data));
       const stripeResponse = await axios.post("/api/stripe/stripe", data);
       const stripeData = await stripeResponse.data;
@@ -47,10 +55,18 @@ const MakeShipment = () => {
   };
   const inputs = [
     {
-      title: "Email",
-      inputName: "email",
-      placeholder: "Enter your email address",
-      type: "email",
+      title: "Receiver's Name",
+      inputName: "receiverName",
+      placeholder: "Enter the name of the receiver",
+      type: "text",
+      register: register,
+      errors: errors,
+    },
+    {
+      title: "Receiver's number",
+      inputName: "receiverNumber",
+      placeholder: "Enter the mobile number of the receiver",
+      type: "text",
       register: register,
       errors: errors,
     },
@@ -134,7 +150,7 @@ const MakeShipment = () => {
               <Button
                 name="Make Payment"
                 bgColor="pry-100"
-                // isFetching={isFetching}
+                isFetching={isFetching}
                 square="true"
                 py="3"
                 width="full"

@@ -4,8 +4,23 @@ export default {
   type: "document",
   fields: [
     {
-      name: "email",
-      title: "Email",
+      name: "shipmentId",
+      title: "Shipment ID",
+      type: "string",
+    },
+    {
+      name: "userId",
+      title: "User ID",
+      type: "string",
+    },
+    {
+      name: "receiverName",
+      title: "Receiver's Name",
+      type: "string",
+    },
+    {
+      name: "receiverNumber",
+      title: "Receiver's Number",
       type: "string",
     },
     {
@@ -42,7 +57,7 @@ export default {
       name: "locationUpdate",
       title: "updateLocation",
       type: "array",
-      of: [{ type: "string" }],
+      of: [{ type: "updatedLocation" }],
     },
     {
       //slug enables us give a unique identifier to our schema

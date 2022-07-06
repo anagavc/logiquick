@@ -1,13 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import Link from "next/link";
+import logo from "../images/logo.png";
+import Image from "next/image";
 import EmailIcon from "@mui/icons-material/Email";
 import { useForm } from "react-hook-form";
-// import { publicRequest } from "../api/requests";
-// import Modal from "../components/UI/Modal/Modal";
-import ClipLoader from "react-spinners/ClipLoader";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { Button } from "./Buttons";
 import { FooterIcon } from "./Buttons";
 import { HeadingSix, Paragraph } from "./FontStyles";
 const Footer = () => {
@@ -34,40 +36,40 @@ const Footer = () => {
       ],
     },
   ];
-  let loading = true;
-  let color = "#1e3330";
-  // const [load, setLoad] = useState(false);
-  // const [showNotification, setShowNotification] = useState(false);
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   reset,
-  //   formState: { errors },
-  // } = useForm();
-  // const onSubmit = async (data) => {
-  //   try {
-  //     setLoad(true);
-  //     await publicRequest.post("/subscription", { ...data });
-  //     setShowNotification(true);
-  //     setLoad(false);
-  //     reset(data);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // };
+
+  const [isFetching, setisFetching] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    setisFetching(true);
+    try {
+      const res = await axios.post("/api/contact/enquiry", data);
+      setisFetching(false);
+      reset();
+      toast.success(`Thank you for subscribing`);
+    } catch (error) {
+      console.log(error);
+      setisFetching(false);
+    }
+  };
   return (
     <div className="w-full flex flex-col justify-between space-y-12  bg-pry-100">
       <div className=" py-6  flex flex-col space-y-8 justify-between w-full ">
-        {/* {showNotification && (
-        <Modal
-          message="Thank you for your subscribing."
-          onClose={() => setShowNotification(false)}
-        />
-      )} */}
         <div className="flex justify-between bg-pry-100 border-b py-2 border-b-pry-50 px-8 md:px-24">
-          <p className="font-heading text-2xl font-bold   text-pry-50 ">
-            LogiQuick
-          </p>
+          <div className="flex justify-center items-center space-x-2 h-full">
+            <div className="w-8 h-8 ">
+              <Image src={logo} alt="logo" />
+            </div>
+            <Link href="/">
+              <span className="text-2xl font-bold cursor-pointer text-pry-50 font-heading justify-center hover:text-sec transition duration-300  flex items-center">
+                LogiQuick
+              </span>
+            </Link>
+          </div>
           <div className="flex flex-col md:flex-row justify-between items-center md:space-x-12">
             <h5 className="hidden md:block font-body uppercase  font-medium text-base text-pry-50">
               follow us on
@@ -119,14 +121,14 @@ const Footer = () => {
                 color="pry-50"
                 align="left"
               />
-              <Link href="/request">
+              <Link href="/#contact">
                 <a className="text-pry-50 hover:text-sec transition font-body text-base duration-300">
                   Request a quote
                 </a>
               </Link>
             </div>
             <form
-              // onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col justify-between w-full md:w-3/5 mt-6 md:mt-0 space-y-8 md:space-y-0 "
             >
               <HeadingSix
@@ -145,8 +147,8 @@ const Footer = () => {
 
               <div className="flex flex-col">
                 <label
-                  className="relative text-pry-50 focus-within:text-pry-50 block"
-                  key="Email address"
+                  className="relative text-pry-50 focus-within:text-pry-100 block"
+                  key="email"
                 >
                   <span className="pointer-events-none w-8 h-8 absolute top-1/2 transform -translate-y-1/2 left-3">
                     <EmailIcon />
@@ -154,27 +156,34 @@ const Footer = () => {
 
                   <input
                     type="text"
-                    id="subscriberEmail"
+                    id="email"
                     name="email"
                     className="py-3 px-4 w-full tracking-widest left-12 block pl-14  placeholder-pry-50 bg-pry-100 border-b border-b-pry-50 text-pry-50 placeholder:text-pry-50  appearance-none transition duration-300 focus:outline-none focus:border-pry-50 focus:ring-pry-50 focus:ring-1 "
                     placeholder="Your email address"
-                    // {...register("subscriberEmail", {
-                    //   required: "Your email address is required, thank you",
-                    //   minLength: {
-                    //     value: 4,
-                    //     message: "Email must be more than 4 characters",
-                    //   },
-                    // })}
+                    {...register("email", {
+                      required: "Your email address is required, thank you",
+                      minLength: {
+                        value: 4,
+                        message: "Email must be more than 4 characters",
+                      },
+                    })}
                   />
                 </label>
-                {/* <p className="text-pry-50 font-normal text-sm font-body">
-                {errors["email"] && errors["email"].message}
-              </p> */}
+                <p className="text-pry-50 font-normal text-sm font-body">
+                  {errors["email"] && errors["email"].message}
+                </p>
               </div>
 
-              <button className=" flex justify-center w-full bg-pry-50 text-pry-100  font-body py-4 px-4 hover:bg-sec  hover:text-pry-50 font-medium transition duration-300">
-                Subscribe
-              </button>
+              <Button
+                name="Subscribe"
+                bgColor="sec"
+                square="true"
+                py="3"
+                isFetching={isFetching}
+                text="pry-50"
+                hoverText="pry-100"
+                hoverBg="pry-50"
+              />
             </form>
           </div>
         </div>

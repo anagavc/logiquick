@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import Input from "../components/Input";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { FadeDownAnimation, FadeUpAnimation } from "../components/Animations";
 const Login = () => {
   const { error, isFetching } = useSelector((state) => state.user);
   const router = useRouter();
@@ -39,8 +40,8 @@ const Login = () => {
           You have entered an invalid username or password
         </p>
       )}
-      <div className="flex justify-between items-center h-full w-full drop-shadow rounded bg-pry-50 ">
-        <div className="md:flex-1 px-4 py-12 w-full md:p-12 space-y-6">
+      <div className="flex flex-col-reverse lg:flex-row justify-between items-center h-full w-full drop-shadow rounded bg-pry-50 ">
+        <FadeUpAnimation className="md:flex-1 px-4 py-12 w-full md:p-12 space-y-6">
           <HeadingSix
             title="Login information"
             color="pry-100"
@@ -55,7 +56,7 @@ const Login = () => {
               inputName="email"
               id="email"
               type="email"
-              title="email"
+              title="Email address"
               register={register}
               errors={errors}
             />
@@ -94,11 +95,11 @@ const Login = () => {
               </Link>
             </div>
           </form>
-        </div>
+        </FadeUpAnimation>
 
-        <div className="bg-pry-100 flex-1 p-12 hidden md:flex flex-col items-center justify-center space-y-4 ">
+        <FadeDownAnimation className="bg-pry-100 flex-1 p-12 flex flex-col items-center justify-center space-y-4 ">
           <HeadingSix color="pry-50" title="Welcome Back" align="center" />
-          <div className="h-3/5 w-3/5">
+          <div className="h-3/5 w-full lg:w-3/5">
             <Image src={loginImage} alt="welcome" />
           </div>
           <Paragraph
@@ -107,7 +108,7 @@ const Login = () => {
             handling."
             align="center"
           />
-        </div>
+        </FadeDownAnimation>
       </div>
     </div>
   );

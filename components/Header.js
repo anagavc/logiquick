@@ -2,11 +2,12 @@ import React from "react";
 import { Button } from "./Buttons";
 import Image from "next/Image";
 import heroImg from "../images/heroImg.svg";
+import { FadeDownAnimation, FadeUpAnimation } from "./Animations";
 const Header = () => {
   return (
     <div className="flex  flex-col justify-between items-center bg-pry-100 mt-16 lg:mt-0 lg:py-28 py-12 px-12 lg:px-24 lg:h-screen w-full">
       <div className="flex space-y-4 lg:space-y-0 lg:justify-between flex-col lg:flex-row items-center w-full h-full">
-        <div className="flex flex-col space-y-8 lg:space-y-12 justify-between w-full lg:w-4/5">
+        <FadeDownAnimation className="flex flex-col space-y-8 lg:space-y-12 justify-between w-full lg:w-4/5">
           <p className="font-heading text-lg text-sec hidden lg:block">
             Best courier company in Uyo
           </p>
@@ -28,7 +29,7 @@ const Header = () => {
               text="pry-50"
               hoverText="pry-100"
               hoverBg="pry-50"
-              path="/trackOrder"
+              path="#track"
             />
             <Button
               name="Request a quote"
@@ -37,14 +38,14 @@ const Header = () => {
               text="pry-50"
               hoverText="pry-100"
               hoverBg="pry-50"
-              path="/requestQuote"
+              path="#contact"
             />
           </div>
-        </div>
-        <div className="w-full flex items-center justify-center h-4/5 lg:w-2/5 lg:h-full">
+        </FadeDownAnimation>
+        <FadeUpAnimation className="w-full flex items-center justify-center h-4/5 lg:w-2/5 lg:h-full">
           <Image src={heroImg} alt="Hero" className="w-full scale-x-flip" />
-        </div>
-        <div className="lg:hidden mb-12 w-full flex-col flex  space-y-2 lg:flex-row lg:space-x-4">
+        </FadeUpAnimation>
+        <FadeUpAnimation className="lg:hidden mb-12 w-full flex-col flex  space-y-2 lg:flex-row lg:space-x-4">
           <Button
             name="Track your order"
             bgColor="sec"
@@ -63,7 +64,7 @@ const Header = () => {
             hoverBg="pry-50"
             path="/requestQuote"
           />
-        </div>
+        </FadeUpAnimation>
       </div>
     </div>
   );

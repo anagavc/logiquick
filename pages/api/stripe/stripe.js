@@ -3,9 +3,8 @@ import nc from "next-connect";
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 const handler = nc();
 handler.post(async (req, res) => {
-  console.log(req.body);
   try {
-    const params = {
+    const session = await stripe.checkout.sessions.create({
       submit_type: "pay",
       mode: "payment",
       payment_method_types: ["card"],
@@ -24,10 +23,9 @@ handler.post(async (req, res) => {
         },
       ],
 
-      success_url: `${req.headers.origin}/account`,
+      success_url: `${req.headers.origin}/successful?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${req.headers.origin}/account`,
-    };
-    const session = await stripe.checkout.sessions.create(params);
+    });
     res.status(200).json(session);
   } catch (error) {
     console.log(error);

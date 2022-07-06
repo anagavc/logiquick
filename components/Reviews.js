@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import { HeadingSix, Paragraph } from "./FontStyles";
 import { urlFor } from "../lib/client";
@@ -10,8 +9,6 @@ import SwiperCore, { Pagination, Autoplay, EffectFade } from "swiper";
 SwiperCore.use([Pagination, Autoplay, EffectFade]);
 
 const Reviews = ({ reviews }) => {
-  console.log(reviews);
-
   return (
     <div className="bg-pry-100 flex flex-col w-full justify-between items-center py-24 lg:px-24 px-8 space-y-12">
       <div className="flex flex-col items-center justify-center">

@@ -1,11 +1,16 @@
+import { useRouter } from "next/router";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { FadeUpAnimation } from "../../components/Animations";
 const Account = (props) => {
+  const router = useRouter();
   const user = useSelector((state) => state.user.currentUser);
-
+  if (!user) {
+    router.push("/Login");
+  }
   return (
     <div className="w-full bg-pry-50 items-center justify-center  flex h-full pt-32 pb-20 px-4 lg:px-0">
-      <div className="w-full  lg:w-2/5 bg-pry-100 flex  flex-col justify-center items-center lg:space-x-4 p-4 lg:p-4 ">
+      <FadeUpAnimation className="w-full  lg:w-2/5 bg-pry-100 flex  flex-col justify-center items-center lg:space-x-4 p-4 lg:p-4 ">
         <div className="p-4 lg:p-8 border-b border-b-pry-50 space-y-8 flex items-center justify-center flex-col">
           <div className="flex justify-center items-center w-full  divide-x divide-pry-50">
             <h2 className=" text-pry-50  font-body text-xl text-center border-b-pry-50 border-b w-full">
@@ -30,14 +35,14 @@ const Account = (props) => {
                 Make Shipment
               </a>
             </Link>
-            <Link href="/shipments">
+            <Link href="/shipment">
               <a className="  text-pry-50 py-2 px-12 font-body text-md border  hover:bg-pry-50 hover:text-pry-100 transition duration-300">
                 Shipment History
               </a>
             </Link>
           </div>
         </div>
-      </div>
+      </FadeUpAnimation>
     </div>
   );
 };

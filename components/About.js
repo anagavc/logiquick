@@ -1,16 +1,17 @@
 import Image from "next/image";
 import React from "react";
 import about from "../images/about.svg";
+import { FadeDownAnimation, FadeUpAnimation } from "./Animations";
 import { Button } from "./Buttons";
 import { SectionTitle, Paragraph } from "./FontStyles";
 
 const About = () => {
   return (
     <div className="bg-pry-100 lg:px-36 px-8 py-24 flex flex-col lg:flex-row justify-between gap-4">
-      <div className="flex justify-center items-center  w-full lg:w-2/5">
+      <FadeDownAnimation className="flex justify-center items-center  w-full lg:w-2/5">
         <Image src={about} alt="About" />
-      </div>
-      <div className="flex flex-col  w-full lg:w-2/5 space-y-4 justify-center">
+      </FadeDownAnimation>
+      <FadeUpAnimation className="flex flex-col  w-full lg:w-2/5 space-y-4 justify-center">
         <SectionTitle title="About" />
         <h3 className="text-pry-50 text-3xl font-bold font-heading">
           <span className="text-sec">Efficient</span> handling of goods and
@@ -34,7 +35,7 @@ const About = () => {
           hoverBg="pry-50"
           path="/about"
         />
-      </div>
+      </FadeUpAnimation>
     </div>
   );
 };

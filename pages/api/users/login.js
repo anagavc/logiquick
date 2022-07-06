@@ -4,7 +4,6 @@ import { signToken } from "../../../lib/auth";
 import { client } from "../../../lib/client";
 const handler = nc();
 handler.post(async (req, res) => {
-  console.log(req.body);
   const user = await client.fetch(`*[_type=="user" && email==$email][0]`, {
     email: req.body.email,
   });

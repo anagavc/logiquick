@@ -10,19 +10,11 @@ handler.post(async (req, res) => {
   const createMutations = [
     {
       create: {
-        _type: "shipment",
-        receiverName: req.body.data.receiverName,
-        userId: req.body.currentUser._id,
-        receiverNumber: req.body.data.receiverNumber,
+        _type: "contact",
+        email: req.body.data.email,
         location: req.body.data.location,
         destination: req.body.data.destination,
         itemType: req.body.data.itemType,
-        itemWeight: req.body.data.itemWeight,
-        trackingNo:
-          req.body.data.location.substring(0, 2).toUpperCase() +
-          req.body.data.destination.substring(0, 2).toUpperCase() +
-          req.body.data.freightType.substring(0, 2).toUpperCase() +
-          ~~(Math.random() * 300),
         freightType: req.body.data.freightType,
       },
     },
@@ -30,7 +22,6 @@ handler.post(async (req, res) => {
   const { data } = await axios.post(
     `https://${projectId}.api.sanity.io/v2022-07-02/data/mutate/${dataset}?returnIds=true`,
     { mutations: createMutations },
-
     {
       headers: {
         "Content-type": "application/json",
@@ -38,24 +29,16 @@ handler.post(async (req, res) => {
       },
     }
   );
-  const shipmentId = data.results[0].id;
-  const shipment = {
-    receiverName: req.body.data.receiverName,
-    receiverNumber: req.body.data.receiverNumber,
+  const contactId = data.results[0].id;
+  const contact = {
+    email: req.body.data.email,
     location: req.body.data.location,
     destination: req.body.data.destination,
     itemType: req.body.data.itemType,
-    itemWeight: req.body.data.itemWeight,
-    trackingNo:
-      req.body.data.location.substring(0, 2).toUpperCase() +
-      req.body.data.destination.substring(0, 2).toUpperCase() +
-      req.body.data.freightType.substring(0, 2).toUpperCase() +
-      ~~(Math.random() * 10),
     freightType: req.body.data.freightType,
-    shipmentId: shipmentId,
-    userId: req.body.currentUser._id,
+    contactId: contactId,
   };
-  res.send({ ...shipment });
+  res.send({ ...contact });
 });
 
 export default handler;
