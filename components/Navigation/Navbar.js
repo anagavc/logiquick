@@ -74,6 +74,7 @@ export const Navbar = () => {
           return (
             <NavItem
               name={link.name + "mobile"}
+              key={link.name + "mobile"}
               path={link.path}
               id={link.name}
               click={handleClose}
@@ -128,6 +129,7 @@ export const Navbar = () => {
             name={link.name}
             path={link.path}
             id={link.name + "desktop"}
+            key={link.name + "desktop"}
           />
         ))}
       </div>
