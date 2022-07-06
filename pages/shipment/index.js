@@ -32,7 +32,7 @@ const ShipmentHistory = () => {
       }
     };
     fetchShipments();
-  }, [router, currentUser]);
+  }, [router, currentUser, dispatch]);
   const { shipment } = useSelector((state) => state.shipment);
   const columns = [
     { field: "_id", headerName: "ID", width: 180 },

@@ -86,7 +86,7 @@ const Login = () => {
             </div>
             <div className="w-full flex  justify-center flex-row md:mx-auto">
               <p className="text-pry-100 font-body text-base">
-                Don't have an account?
+                Don&apos;t have an account?
               </p>
               <Link href="/Register">
                 <a className="text-pry-100 font-body ml-2 font-bold text-base hover:text-sec transition duration-300">
@@ -104,7 +104,7 @@ const Login = () => {
           </div>
           <Paragraph
             color="pry-50"
-            title=" At Logiquick, we are commited to ensure you have a blissful courier
+            title="At Logiquick, we are commited to ensure you have a blissful courier
             handling."
             align="center"
           />

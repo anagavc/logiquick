@@ -47,7 +47,7 @@ const Reviews = ({ reviews }) => {
             <SwiperSlide key={review.slug}>
               <div className="flex flex-col space-y-4 w-full py-8 px-6 rounded  items-center  border-x-4 drop-shadow border-x-sec  bg-pry-50 ">
                 <h6 className="text-xl text-pry-100 font-heading text-center  font-bold border-b border-b-pry-100 w-full">
-                  "
+                  &quot;
                 </h6>
 
                 <div>

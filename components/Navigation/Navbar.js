@@ -73,7 +73,7 @@ export const Navbar = () => {
         {navItems.map((link) => {
           return (
             <NavItem
-              name={link.name}
+              name={link.name + "mobile"}
               path={link.path}
               id={link.name}
               click={handleClose}
@@ -124,7 +124,11 @@ export const Navbar = () => {
 
       <div className="lg:flex justify-between items-center space-x-8 hidden">
         {navItems.map((link) => (
-          <NavItem name={link.name} path={link.path} id={link.name} />
+          <NavItem
+            name={link.name}
+            path={link.path}
+            id={link.name + "desktop"}
+          />
         ))}
       </div>
       <div className="lg:flex  items-center hidden  space-x-8  justify-center  px-12 lg:py-2 pb-12  lg:static bg-pry-100 lg:z-40 z-40 w-full lg:w-auto lg:px-0">

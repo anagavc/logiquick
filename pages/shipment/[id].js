@@ -63,7 +63,7 @@ const ShipmentInformation = () => {
         <div className="flex flex-col">
           <div className="flex flex-col ">
             {shipment.locationUpdate?.map((update) => (
-              <div className="flex flex-col w-full">
+              <div className="flex flex-col w-full" key={update.status}>
                 <div className="py-3 mx-20 bg-pry-100 border border-pry-100 w-0"></div>
                 <div className="bg-pry-100 w-40 text-center flex justify-center items-center px-6 py-2 text-pry-50 font-body font-bold text-base">
                   {update?.date}

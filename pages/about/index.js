@@ -51,7 +51,10 @@ const About = ({ teamData }) => {
         </div>
         <div className="flex flex-col lg:flex-row gap-6 justify-between w-full lg:space-x-4">
           {teamData.map((team) => (
-            <div className="bg-pry-100 flex flex-col lg:w-96 w-full px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec">
+            <div
+              className="bg-pry-100 flex flex-col lg:w-96 w-full px-8 py-12 rounded space-y-4 justify-center items-center border-y-4 border-y-sec"
+              key={team.teamMate}
+            >
               <div className="rounded-full w-36 h-36 py-2 px-2 bg-pry-50 flex flex-col justify-center items-center ">
                 <div className="bg-sec rounded-full w-4/5 h-4/5 py-4">
                   <img src={urlFor(team.image)} alt={team.teamMate} />

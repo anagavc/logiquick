@@ -17,7 +17,10 @@ const Blog = ({ blogData }) => {
       </FadeDownAnimation>
       <div className="flex lg:flex-row flex-col justify-between gap-4 lg:space-x-8 w-full">
         {blogData.map((data) => (
-          <FadeUpAnimation className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-full lg:w-2/6">
+          <FadeUpAnimation
+            key={data.slug.current}
+            className="flex flex-col items-center space-y-4  py-4 px-4 bg-pry-50 border-y-2 border-y-sec w-full lg:w-2/6"
+          >
             <div className="w-full h-64">
               <img
                 src={urlFor(data.image && data.image)}
