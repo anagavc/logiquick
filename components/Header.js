@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "./Buttons";
-import Image from "next/Image";
+import Image from "next/image";
 import heroImg from "../images/heroImg.svg";
 import { FadeDownAnimation, FadeUpAnimation } from "./Animations";
 const Header = () => {
