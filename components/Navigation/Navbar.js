@@ -73,7 +73,7 @@ export const Navbar = () => {
         {navItems.map((link) => {
           return (
             <NavItem
-              name={link.name + "mobile"}
+              name={link.name}
               key={link.name + "mobile"}
               path={link.path}
               id={link.name}

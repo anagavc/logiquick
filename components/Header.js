@@ -53,7 +53,7 @@ const Header = () => {
             text="pry-50"
             hoverText="pry-100"
             hoverBg="pry-50"
-            path="/trackOrder"
+            path="/#track"
           />
           <Button
             name="Request a quote"
@@ -62,7 +62,7 @@ const Header = () => {
             text="pry-50"
             hoverText="pry-100"
             hoverBg="pry-50"
-            path="/requestQuote"
+            path="/#contact"
           />
         </FadeUpAnimation>
       </div>
