@@ -4,11 +4,6 @@ export default {
   type: "document",
   fields: [
     {
-      name: "shipmentId",
-      title: "Shipment ID",
-      type: "string",
-    },
-    {
       name: "userId",
       title: "User ID",
       type: "string",
